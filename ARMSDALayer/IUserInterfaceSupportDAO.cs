@@ -8,6 +8,6 @@ namespace ARMSDALayer
 {
     public interface IUserInterfaceSupportDAO <T>
     {
-        List<T> getAllRecords();
+        List<T> GetAllRecords();
     }
 }

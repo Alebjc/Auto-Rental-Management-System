@@ -1,6 +1,7 @@
 ﻿using ARMSDALayer;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +10,8 @@ namespace ARMSBOLayer
 {
     public class CreditCardProcessingMerchantServiceCompany
     {
+
+
         //***************************************CREDIT CARD CLASS*******************************************************************
 
         //######################################################## IMPORTANT WARNING! #######################################################
@@ -21,7 +24,28 @@ namespace ARMSBOLayer
 
         //====================== START of Protected DALayer Methods SPRINT #2 =======================================================
 
+        
 
+
+        public byte CreditCardProcessingMerchantServiceCompanyCode { get; set; }
+        public string CreditCardProcessingMerchantServiceCompanyName { get; set; }
+
+        public CreditCardProcessingMerchantServiceCompany()
+        {
+            this.CreditCardProcessingMerchantServiceCompanyCode = 0;
+            this.CreditCardProcessingMerchantServiceCompanyName = "";
+        }
+
+        ~CreditCardProcessingMerchantServiceCompany()
+        {
+
+        }
+
+        public CreditCardProcessingMerchantServiceCompany(byte creditCardProcessingMerchantServiceCompanyCode, string creditCardProcessingMerchantServiceCompanyName)
+        {
+            this.CreditCardProcessingMerchantServiceCompanyCode = creditCardProcessingMerchantServiceCompanyCode;
+            this.CreditCardProcessingMerchantServiceCompanyName = creditCardProcessingMerchantServiceCompanyName;
+        }
 
         #region "PROTECTED BUSINESS LAYER DATA ACCESS METHODS DECLARATIONS"
 
@@ -50,6 +74,30 @@ namespace ARMSBOLayer
         //Return Value: LIST COLLECTION with all the Credit Card Processing
         //              Merchant Companu records.
 
+
+
+
+
+
+        public static List<CreditCardProcessingMerchantServiceCompany> GetAllCreditCardProcessingMerchantServiceCompanies()
+        {
+            try
+            {
+                // Call the DALayer method to get all credit card processing merchant service companies
+                List<CreditCardProcessingMerchantServiceCompany> merchantServiceCompanies = DALayer_GetAllCreditCardProcessingMerchantServiceCompanies();
+
+                // Return the list of companies if the method call was successful
+                return merchantServiceCompanies ?? new List<CreditCardProcessingMerchantServiceCompany>();
+            }
+            catch (Exception)
+            {
+                // Log the exception (not implemented here)
+                // Return null in case of an exception
+                return null;
+            }
+        }
+
+
         protected static List<CreditCardProcessingMerchantServiceCompany> DALayer_GetAllCreditCardProcessingMerchantServiceCompanies()
         {
             //Step A-Start Error Trapping
@@ -61,7 +109,7 @@ namespace ARMSBOLayer
                 DALObjectFactoryBase.GetDataSourceDAOFactory(DALObjectFactoryBase.SQLSERVER);
 
                 //Step 2-now that you have the SQL FACTORY object GET DAO object to do the work
-                CreditCardProcessingMerchantServiceCompanyDAO objCreditCardProcessingMerchantServiceCompanyDAO = objDAOFactory.CreditCardProcessingMerchantServiceCompanyDAO;
+                CreditCardProcessingMerchantServiceCompanyDAO objCreditCardProcessingMerchantServiceCompanyDAO = objDAOFactory.GetCreditCardProcessingMerchantServiceCompanyDAO();
 
                 //Step 3-call DAO object to do the work & return COLLECTION of Data Transfer Objects
                 List<CreditCardProcessingMerchantServiceCompanyDTO> objCreditCardProcessingMerchantServiceCompanyDTOList = objCreditCardProcessingMerchantServiceCompanyDAO.GetAllRecords();
@@ -107,6 +155,31 @@ namespace ARMSBOLayer
             }
 
         }//End of method
+
+
+        public void Print()
+        {
+            try
+            {
+                // Open or create Network_Printer.txt file for appending
+                using (StreamWriter writer = File.AppendText("Network_Printer.txt"))
+                {
+                    // Write object's data to the file
+                    writer.WriteLine("Merchant Information");
+                    writer.WriteLine($"Merchant Code = {this.CreditCardProcessingMerchantServiceCompanyCode}");
+                    writer.WriteLine($"Merchant Name = {this.CreditCardProcessingMerchantServiceCompanyName}");
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle any exceptions
+                Console.WriteLine($"An error occurred while printing the credit card information: {ex.Message}");
+                // Re-throw the exception
+                throw;
+            }
+        }
+
 
         #endregion
 

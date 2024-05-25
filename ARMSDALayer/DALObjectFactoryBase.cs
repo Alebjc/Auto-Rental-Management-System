@@ -83,7 +83,7 @@ namespace ARMSDALayer
 
         }//End of method
 
-        public abstract CreditCardProcessingMerchantServiceCompanyDAO CreditCardProcessingMerchantServiceCompanyDAO { get; }
+        //public abstract CreditCardProcessingMerchantServiceCompanyDAO CreditCardProcessingMerchantServiceCompanyDAO { get; }
 
         //=================================================================
         //Purpose:      Abstract methods are method declarations that only 

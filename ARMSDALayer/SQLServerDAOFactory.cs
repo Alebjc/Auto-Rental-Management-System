@@ -8,7 +8,7 @@ namespace ARMSDALayer
 {
     public class SQLServerDAOFactory : DALObjectFactoryBase
     {
-        public override CreditCardProcessingMerchantServiceCompanyDAO CreditCardProcessingMerchantServiceCompanyDAO => throw new NotImplementedException();
+        //public override CreditCardProcessingMerchantServiceCompanyDAO CreditCardProcessingMerchantServiceCompanyDAO => throw new NotImplementedException();
 
         //*************************************** SQLServerDAOFactory CLASS *******************************************************************
 

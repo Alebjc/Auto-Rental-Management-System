@@ -50,5 +50,13 @@ namespace ARMSWinClient
         {
             this.Close();
         }
+
+        private void btnRegistration_Click(object sender, EventArgs e)
+        {
+            frmCreditCardRegistration objCCR = new frmCreditCardRegistration();
+            this.Hide();
+            objCCR.ShowDialog();
+            this.Show();
+        }
     }
 }

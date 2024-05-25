@@ -66,6 +66,7 @@ namespace ARMSWinClient
             this.btnRegistration.TabIndex = 2;
             this.btnRegistration.Text = "Credit Card Registration";
             this.btnRegistration.UseVisualStyleBackColor = true;
+            this.btnRegistration.Click += new System.EventHandler(this.btnRegistration_Click);
             // 
             // btnUpdate
             // 

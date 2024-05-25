@@ -52,6 +52,12 @@
     <Compile Include="frmCreditCardMSForm.Designer.cs">
       <DependentUpon>frmCreditCardMSForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmCreditCardRegistration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCreditCardRegistration.Designer.cs">
+      <DependentUpon>frmCreditCardRegistration.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmCreditCardSearch.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,6 +80,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmCreditCardMSForm.resx">
       <DependentUpon>frmCreditCardMSForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCreditCardRegistration.resx">
+      <DependentUpon>frmCreditCardRegistration.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmCreditCardSearch.resx">
       <DependentUpon>frmCreditCardSearch.cs</DependentUpon>
@@ -110,6 +119,10 @@
     <ProjectReference Include="..\ARMSBOLayer\ARMSBOLayer.csproj">
       <Project>{177fd088-e8be-4155-8000-9b6688252806}</Project>
       <Name>ARMSBOLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ARMSDALayer\ARMSDALayer.csproj">
+      <Project>{A3D0C0FA-9092-469B-860F-1B14E6A1E9D1}</Project>
+      <Name>ARMSDALayer</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

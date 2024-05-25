@@ -1,6 +1,7 @@
 ﻿using ARMSDALayer;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +19,8 @@ namespace ARMSBOLayer
         //###########################################################################################################################################
 
 
+        public byte CreditCardNetworkCompanyCode { get; set; }
+        public string CreditCardNetworkCompanyName { get; set; }
 
         //====================== START of Protected DALayer Methods SPRINT #2 =======================================================
 
@@ -47,6 +50,40 @@ namespace ARMSBOLayer
         //Parameter:    None.
         //Return Value: LIST COLLECTION with all the Credit Card
         //              Network Company records.
+        public CreditCardNetworkCompany()
+        {
+            this.CreditCardNetworkCompanyCode = 0;
+            this.CreditCardNetworkCompanyName = "";
+        }
+
+        public CreditCardNetworkCompany(byte CNCC, string CNCN)
+        {
+            this.CreditCardNetworkCompanyCode = CNCC;
+            this.CreditCardNetworkCompanyName = CNCN;
+        }
+        ~CreditCardNetworkCompany()
+        {
+
+        }
+
+
+        public static List<CreditCardNetworkCompany> GetAllCreditCardNetworkCompanies()
+        {
+            try
+            {
+                // Call the DALayer method to get all credit card processing merchant service companies
+                List<CreditCardNetworkCompany> networkCompanies = DALayer_GetAllCreditCardNetworkCompanies();
+
+                // Return the list of companies if the method call was successful
+                return networkCompanies ?? new List<CreditCardNetworkCompany>();
+            }
+            catch (Exception)
+            {
+                // Log the exception (not implemented here)
+                // Return null in case of an exception
+                return null;
+            }
+        }
 
         protected static List<CreditCardNetworkCompany> DALayer_GetAllCreditCardNetworkCompanies()
         {
@@ -109,6 +146,29 @@ namespace ARMSBOLayer
             }
 
         }//End of method
+
+        public void Print()
+        {
+            try
+            {
+                // Open or create Network_Printer.txt file for appending
+                using (StreamWriter writer = File.AppendText("Network_Printer.txt"))
+                {
+                    // Write object's data to the file
+                    writer.WriteLine("Network Company information:");
+                    writer.WriteLine($"Network Company Code = {this.CreditCardNetworkCompanyCode}");
+                    writer.WriteLine($"Network Company Name = {this.CreditCardNetworkCompanyName}");
+
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle any exceptions
+                Console.WriteLine($"An error occurred while printing the credit card information: {ex.Message}");
+                // Re-throw the exception
+                throw;
+            }
+        }
 
         //#endregion
 
